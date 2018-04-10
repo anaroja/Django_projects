@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">{%load static%}
+    <link rel='stylesheet' href="{% static 'store/css/main.css' %}">
+    <link rel='stylesheet' href="{% static 'store/css/bootstrap.min.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='wrapper'>
+        <div>
+            <h1>Thank you for your business!</h1>
+            <h3>We charged your credit card for ${{request.session.charged}}</h3>
+        </div>
+        <p>You have order {{request.session.items}} items so far and spend ${{request.session.total}} with Amadon.com!</p>
+        <a href="/amadon">Go back!</a>
+    </div>
+</body>
+
+</html>

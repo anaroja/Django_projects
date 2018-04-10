@@ -1,0 +1,17 @@
+#wrapper{
+    margin: 0px auto;
+    width: 970px;
+}
+h2{
+    border: 1px solid black;
+    text-align: center;
+    width: 280px;
+    margin-left: 300px;
+}
+.line{
+    border: 1px solid black;
+    width: 400px;
+    margin-left: 250px;
+    font-size: 50px;
+    text-align: center;
+}

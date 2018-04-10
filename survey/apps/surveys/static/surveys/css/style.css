@@ -1,0 +1,18 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* border: 1px red solid; */
+}
+
+#wrapper{
+    margin: 0px auto;
+    width: 970px;
+}
+#body{
+border: 1px solid black;
+width: 550px;
+}
+textarea {
+    max-height: 150px;
+    resize: vertical;
+}

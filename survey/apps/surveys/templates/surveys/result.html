@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {%load static%}
+    <link rel='stylesheet' href="{% static 'surveys/css/result.css' %}">
+    <title>Result</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h3>Thanks for submitting this form! You have now submitted this form {{request.session.counter}} times now</h3>
+        <div id="body">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <h2>Submitted information:</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>{{request.session.name}}</td>
+                </tr>
+                <tr>
+                    <td>Dojo Location:</td>
+                    <td>{{request.session.location}}</td>
+                </tr>
+                <tr>
+                    <td>Favorite Language:</td>
+                    <td>{{request.session.language}}</td>
+                </tr>
+                <tr>
+                    <td>Comment:</td>
+                    <td>{{request.session.comment}}</td>
+                </tr>
+            </table>
+            <form action='/' class='left_button'>
+                {% csrf_token %}
+                <button>Go back</button>
+            </form>
+            <form action='/reset' class='right_button'>
+                {% csrf_token %}
+                <input type='submit' name='submit' value='Reset'>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

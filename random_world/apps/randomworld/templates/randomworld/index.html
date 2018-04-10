@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {%load static%}
+    <link rel='stylesheet' href="{% static 'randomworld/css/style.css' %}">
+    <title>Random World</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>Random World Attempt # {{request.session.counter}}</h1>
+        <div id='gener'>
+            <div>
+                {{ generated }}
+            </div>
+        </div>
+        <form action='/' method="POST">
+            {% csrf_token %}
+            <input type="submit" name="submit" value="Generate">
+        </form>
+        <form action='/reset'>
+            {% csrf_token %}
+            <input type='submit' name='submit' value='Reset'>
+        </form>
+    </div>
+</body>
+
+</html>

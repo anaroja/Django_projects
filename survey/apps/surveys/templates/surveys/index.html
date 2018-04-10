@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {%load static%}
+    <link rel='stylesheet' href="{% static 'surveys/css/style.css' %}">
+    <title>Survey Form</title>
+</head>
+
+<body>
+    <div id='wrapper'>
+        <div id='body'>
+            <form action='/process' method='post'>
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Your Name:</td>
+                        <td>
+                            <input type='text' name='name' />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dojo location:</td>
+                        <td>
+                            <select name='location'>
+                                <option value="San Jose">San Jose</option>
+                                <option value="Cartago">Cartago</option>
+                                <option value="Alajuela">Alajuela</option>
+                                <option value="Heredia">Heredia</option>
+                            </select>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Favorite Language:</td>
+                        <td>
+                            <select name='language'>
+                                <option value="Javascript">Javascript</option>
+                                <option value="SQL">SQL</option>
+                                <option value="C++">C+</option>
+                                <option value="Python">Python</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Comment(optional):</td>
+                        <td>
+                            <textarea rows="4" cols="50" name='comment'></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='submit' value='Submit'>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

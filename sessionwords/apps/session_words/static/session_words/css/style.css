@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#wrapper{
+    width: 970px;
+}
+#left_panel{
+display: inline-block;
+width: 300px;
+margin-top: 20px;
+margin-left: 300px;
+border-right: 2px solid black;
+}
+#right_panel{
+display: inline-block;
+width: 300px;
+}
+form input[name="color"]{
+margin-bottom: 10px;
+}
+form input[name="size"]{
+    margin-top: 10px;
+}
+h1{
+    padding-bottom: 20px;
+}
+input[name='word']{
+    margin-bottom: 10px;
+    width: 250px;
+}
+.red{color:red;}
+.green{color:green;}
+.blue{color:blue;}
+.big{font-size: 20pt;}

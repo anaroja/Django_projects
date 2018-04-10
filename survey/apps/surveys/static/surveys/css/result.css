@@ -1,0 +1,21 @@
+
+#wrapper{
+    margin: 0px auto;
+    width: 970px;
+}
+h3{
+    background-color: green;
+    width: 550px;
+}
+#body{
+    border: 1px solid black;
+    width: 550px;
+    padding: 10px;
+}
+.left_button{
+display: inline-block;
+margin-right: 400px;
+}
+.right_button{
+display: inline-block;
+}
