@@ -1,0 +1,108 @@
+python ../manage.py startapp book_author
+# Create your models here.
+class Book(models.Model):
+    name = models.CharField(max_length=255)
+    desc = models.TextField(default='')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def __repr__(self):
+        return "<Blog object: {}>".format(self.name)
+
+class Author(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    email_address = models.CharField(max_length=255)
+    books = models.ManyToManyField(Book, related_name="authors")
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+    def __repr__(self):
+        return "<Blog object: {} {} {} {}>".format(self.first_name, self.last_name, self.email_address, self.books)
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from apps.book_authors.models import *
+Book.objects.create(name='C sharp')
+Book.objects.create(name='Java')
+Book.objects.create(name='Python')
+Book.objects.create(name='PHP')
+Book.objects.create(name='Ruby')
+Author.objects.create(first_name='Mike',last_name='Heins',email_address='mike@heins.com')
+Author.objects.create(first_name='Speros',last_name='Tirado',email_address='Speros@tirado.com')
+Author.objects.create(first_name='John',last_name='Seminario',email_address='John@seminario.com')
+Author.objects.create(first_name='Jadee',last_name='Romero',email_address='Jadee@romero.com')
+Author.objects.create(first_name='Jay',last_name='Keely',email_address='jay@Keely.com')
+added to model= notes = models.TextField(default='')
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from apps.book_authors.models import *
+b = Book.objects.get(id=5)
+b.name = 'C#'
+b.save()
+Book.objects.get(id=5)
+<Blog object: C#>
+b = Author.objects.get(id=5)
+b.first_name = 'Ketul'
+b.save()
+Author.objects.get(id=5)
+<Blog object: Ketul Keely jay@Keely.com book_authors.Book.None>
+ ---Assign the first author to the first 2 books
+  >>>this_book = Book.objects.get(id=1)
+    >>>this_author = Author.objects.get(id=1)
+    >>>this_author.books.add(this_book)
+        >>>this_book = Book.objects.get(id=2)
+        >>>this_author = Author.objects.get(id=1)
+        >>>this_author.books.add(this_book)
+---Assign the second author to the first 3 books
+>>>this_book = Book.objects.get(id=1)
+>>>this_author = Author.objects.get(id=2)
+>>>this_author.books.add(this_book)
+    >>>this_book = Book.objects.get(id=2)
+    >>>this_author = Author.objects.get(id=2)
+    >>>this_author.books.add(this_book)
+>>>this_book = Book.objects.get(id=3)
+>>>this_author = Author.objects.get(id=2)
+>>>this_author.books.add(this_book)
+Assign the third author to the first 4 books
+>>>this_book = Book.objects.get(id=1)
+>>>this_author = Author.objects.get(id=3)
+>>>this_author.books.add(this_book)
+    >>>this_book = Book.objects.get(id=2)
+    >>>this_author = Author.objects.get(id=3)
+    >>>this_author.books.add(this_book)
+>>>this_book = Book.objects.get(id=3)
+>>>this_author = Author.objects.get(id=3)
+>>>this_author.books.add(this_book)
+    >>>this_book = Book.objects.get(id=4)
+    >>>this_author = Author.objects.get(id=3)
+    >>>this_author.books.add(this_book)
+---Assign the fourth author to the first 5 books
+>>>this_book = Book.objects.get(id=1)
+>>>this_author = Author.objects.get(id=4)
+>>>this_author.books.add(this_book)
+    >>>this_book = Book.objects.get(id=2)
+    >>>this_author = Author.objects.get(id=4)
+    >>>this_author.books.add(this_book)
+>>>this_book = Book.objects.get(id=3)
+>>>this_author = Author.objects.get(id=4)
+>>>this_author.books.add(this_book)
+    >>>this_book = Book.objects.get(id=4)
+    >>>this_author = Author.objects.get(id=4)
+    >>>this_author.books.add(this_book)
+>>>this_book = Book.objects.get(id=5)
+>>>this_author = Author.objects.get(id=4)
+>>>this_author.books.add(this_book)    
+
+Book.objects.get(id=3).authors.in_bulk()
+Book.objects.get(id=3).authors.remove(Author.objects.get(id=2))
+
+---For the 2nd book, add the 5th author as one of the authors
+this_book = Book.objects.get(id=2)
+this_author = Author.objects.get(id=5)
+this_author.books.add(this_book) 
+
+Author.objects.get(id=3).books.in_bulk()
+Author.objects.get(id=2).books.in_bulk()
+
+
+

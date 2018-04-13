@@ -1,0 +1,85 @@
+python ../manage.py startapp likes_books
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from apps.likes_books.models import *
+User.objects.create(first_name='Mike',last_name='Heins',email_address='mike@heins.com')
+User.objects.create(first_name='Ana',last_name='Murillo',email_address='ana.mis17@hotmail.com')
+User.objects.create(first_name='Esteban',last_name='Palma',email_address='poetdream@gmail.com')
+
+
+---Have the first user create/upload 2 books.
+upload_books = Book.objects.create(name="Life", desc="How to love your life", uploader=User.objects.get(id=2))
+upload_books = Book.objects.create(name="Algorithms", desc="dying every morning at 9am", uploader=User.objects.get(id=2))
+
+---Have the second user create/upload 2 other books.
+upload_books = Book.objects.create(name="Tomela", desc="talking tico is fun", uploader=User.objects.get(id=1))
+upload_books = Book.objects.create(name="Holy Molly!", desc="Most used Todd's word", uploader=User.objects.get(id=1))
+
+---Have the third user create/upload 2 other books.
+upload_books = Book.objects.create(name="Matter", desc="Matter Control", uploader=User.objects.get(id=3))
+upload_books = Book.objects.create(name="Design", desc="Lear how to make cool stuff", uploader=User.objects.get(id=3))
+
+Have the first user like the last book and the first book
+
+liker = User.objects.get(id=1)
+books = Book.objects.get(id=1)
+liker.liked_books.add(books)
+
+liker = User.objects.get(id=1)
+books = Book.objects.get(id=6)
+liker.liked_books.add(books)
+
+
+Have the second user like the first book and the third book
+
+liker = User.objects.get(id=2)
+books = Book.objects.get(id=1)
+liker.liked_books.add(books)
+
+liker = User.objects.get(id=2)
+books = Book.objects.get(id=3)
+liker.liked_books.add(books)
+
+Have the third user like all books
+
+liker = User.objects.get(id=3)
+books = Book.objects.get(id=1)
+liker.liked_books.add(books)
+
+liker = User.objects.get(id=3)
+books = Book.objects.get(id=2)
+liker.liked_books.add(books)
+
+liker = User.objects.get(id=3)
+books = Book.objects.get(id=3)
+liker.liked_books.add(books)
+
+liker = User.objects.get(id=3)
+books = Book.objects.get(id=4)
+liker.liked_books.add(books)
+
+liker = User.objects.get(id=3)
+books = Book.objects.get(id=5)
+liker.liked_books.add(books)
+
+liker = User.objects.get(id=3)
+books = Book.objects.get(id=6)
+liker.liked_books.add(books)
+
+
+Display all users who like the first book
+
+Book.objects.get(id=3).liked_users.in_bulk()
+
+Display the user who uploaded the first book
+
+Book.objects.get(id=1).uploader
+
+Display all users who like the second book
+
+Book.objects.get(id=2).liked_users.in_bulk()
+
+Display the user who uploaded the second book
+
+Book.objects.get(id=2).uploader

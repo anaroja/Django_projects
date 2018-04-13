@@ -16,3 +16,9 @@ mkdir {{app_name}}/static/{{app_name}}/js
 mkdir {{app_name}}/static/{{app_name}}/img
 python /c/Users/anaroja/Desktop/'coding dojo'/python_stack/django/{{project_name}}/manage.py migrate
 python /c/Users/anaroja/Desktop/'coding dojo'/python_stack/django/{{project_name}}/manage.py runserver
+
+
+
+python ../manage.py startapp {{app_name}}
+python /c/Users/anaroja/Desktop/'coding dojo'/python_stack/django/{{project_name}}/manage.py migrate
+

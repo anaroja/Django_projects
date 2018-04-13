@@ -1,0 +1,31 @@
+cd /c/Users/anaroja/Desktop/'coding dojo'/python_stack/django
+django-admin startproject modelsProj
+mkdir modelsProj/apps
+touch modelsProj/apps/__init__.py
+cd modelsProj/apps
+python ../manage.py startapp user_login
+python /c/Users/anaroja/Desktop/'coding dojo'/python_stack/django/modelsProj/manage.py migrate
+python /c/Users/anaroja/Desktop/'coding dojo'/python_stack/django/modelsProj/manage.py runserver
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from apps.modelsProj.models import *
+User.objects.all()
+User.objects.last()
+User.objects.create(first_name= 'Ana', last_name='Murillo', email_address='ana.mis17@hotmail.com',age='23')
+User.objects.create(first_name= 'Patricia', last_name='Rojas', email_address='patricia@hotmail.com',age='52')
+User.objects.create(first_name= 'Joaquin', last_name='Murillo', email_address='joaquin@hotmail.com',age='52')
+User.objects.create(first_name= 'Pablo', last_name='Jinesta', email_address='pablos17@hotmail.com',age='45')
+User.objects.first()
+User.objects.first.name()
+User.objects.order_by("-first_name")
+User.objects.get(id=3)
+b = User.objects.last()
+b.last_name ='Murillo'
+b.save
+b = User.objects.get(id=4)
+b.delete()
+
+
+
+  

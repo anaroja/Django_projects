@@ -1,0 +1,60 @@
+python ../manage.py startapp dojo_ninjas
+
+Models = 
+# Create your models here.
+class Dojo(models.Model):
+    name = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    # desc = models.CharField(max_lenght=255)
+    def __repr__(self):
+        return "<Blog object: {} {}>".format(self.name, self.city, self.state)
+
+class Ninja(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    dojo = models.ForeignKey(Dojo, related_name = "ninjas")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def __repr__(self):
+        return "<Blog object: {} {}>".format(self.first_name, self.last_name)
+
+python manage.py makemigration
+python manage.py migrate
+python manage.py shell
+from apps.dojo_ninjas.models import *
+Dojo.objects.create(name='CodingDojo Silicon Valley', city='Mountain View', state='CA')
+Dojo.objects.create(name='CodingDojo Seattle', city='Seattle', state='WA')
+Dojo.objects.create(name='CodingDojo New York', city='New York', state='NY')
+Dojo.objects.get(id=1).delete()
+Dojo.objects.get(id=2).delete()
+Dojo.objects.get(id=3).delete()
+Dojo.objects.create(name='CodingDojo La Garita', city='La Garita', state='AL')
+Dojo.objects.create(name='CodingDojo Desamparados', city='Desamparados', state='SJO')
+Dojo.objects.create(name='CodingDojo Tilaran', city='Tilaran', state='GUA')
+new_ninja = Ninja.objects.create(first_name='Stheve', last_name='Oses', dojo = Dojo.objects.get(id=4)
+new_ninja = Ninja.objects.create(first_name='Esteban', last_name='Palma', dojo = Dojo.objects.get(id=4))
+new_ninja = Ninja.objects.create(first_name='Patricia', last_name='Rojas', dojo = Dojo.objects.get(id=4))
+new_ninja = Ninja.objects.create(first_name='Fabian', last_name='Murillo', dojo = Dojo.objects.get(id=5))
+new_ninja = Ninja.objects.create(first_name='Joaquin', last_name='Murillo', dojo = Dojo.objects.get(id=5))
+new_ninja = Ninja.objects.create(first_name='Paula', last_name='Murillo', dojo = Dojo.objects.get(id=5))
+new_ninja = Ninja.objects.create(first_name='Pablo', last_name='Jinesta', dojo = Dojo.objects.get(id=6))
+new_ninja = Ninja.objects.create(first_name='Sebastian', last_name='Murillo', dojo = Dojo.objects.get(id=6))
+new_ninja = Ninja.objects.create(first_name='Marcela', last_name='Murillo', dojo = Dojo.objects.get(id=6))
+Dojo.objects.first().ninjas.all()
+Dojo.objects.last().ninjas.all()
+Added to Dojo model= desc = models.TextField(default='')
+exit shell
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from apps.dojo_ninjas.models import *
+In [4]: Dojo.objects.get(id=4).desc
+Out[4]: u''
+
+
+
+
+
